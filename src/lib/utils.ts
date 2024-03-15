@@ -27,7 +27,3 @@ export function isSolvable(indexes: number[]): boolean {
         return inversions % 2 !== 0;
     }
 }
-
-// Example usage
-const indexes = [2, 4, 3, 1, 5, 6, 7, 8, 0]; // Randomly sorted list of indexes
-console.log(isSolvable(indexes)); // Output: true or false
