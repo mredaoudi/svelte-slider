@@ -1,7 +1,3 @@
-<script>
-    import './styles.css';
-</script>
-
 <div class="content">
     <h1><span class="name">Slider</span>: The Sliding Puzzle</h1>
     <slot/>

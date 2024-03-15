@@ -21,17 +21,21 @@
     let emptyImageNumber: number = 9;
 
     function handleClick(clicked: Image) {
-        const empty: Image = images.find((image) => image.id === emptyImageNumber)!;
+        const empty = images.find((image) => image.id === emptyImageNumber)!;
         const emptyIndex = images.indexOf(empty);
         const clickedIndex = images.indexOf(clicked);
 
-        if (clickedIndex === emptyIndex - 1 || clickedIndex === emptyIndex + 1) {
-            images[emptyIndex] = clicked;
-            images[clickedIndex] = empty;
-        } else if (clickedIndex === emptyIndex - 3 || clickedIndex === emptyIndex + 3) {
+        let clickedRow = Math.floor(clickedIndex / 3);
+        let clickedCol = clickedIndex % 3;
+        let emptyRow = Math.floor(emptyIndex / 3);
+        let emptyCol = emptyIndex % 3;
+
+        if ((clickedRow === emptyRow && Math.abs(clickedCol - emptyCol) === 1) || 
+            (clickedCol === emptyCol && Math.abs(clickedRow - emptyRow) === 1)) {
             images[emptyIndex] = clicked;
             images[clickedIndex] = empty;
         }
+
         solved = images.every((image, index) => image.id === index + 1);
     }
 </script>
